@@ -18,12 +18,25 @@
             return number;
         }
 
+        
+
+
         static void HigherOrLower(int number)
         {
             Console.Write("Enter your guess:");
-            int Guess = Convert.ToInt32(Console.ReadLine());
-           // Console.WriteLine(Guess);//will be taken away, just for testing
-           // Console.WriteLine(number); //will be taken away, just for testing
+            if (!int.TryParse(Console.ReadLine(), out int Guess))
+            {
+
+                Console.WriteLine("Please enter a number");
+                HigherOrLower(number);
+            }
+
+            Console.WriteLine(Guess);
+            Console.WriteLine(number);
+
+
+            // Console.WriteLine(Guess);//will be taken away, just for testing
+            // Console.WriteLine(number); //will be taken away, just for testing
             if (Guess > number)
             {
                 Console.WriteLine("You gotta go Lower!");
@@ -40,6 +53,7 @@
                 Replay();
             }
         }
+
 
         static void Replay()
         {
