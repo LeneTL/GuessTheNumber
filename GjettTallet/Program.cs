@@ -1,4 +1,6 @@
-﻿namespace GjettTallet
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace GjettTallet
 {
     internal class Program
     {
@@ -8,7 +10,8 @@
             Console.WriteLine("Are you able to find the Number? >:]");
             int number = RandomizeTheNumber();
             // Console.WriteLine(number); //will be taken away, just for testing
-            HigherOrLower(number);
+            EnterGuess(number);
+            
         }
 
         static int RandomizeTheNumber()
@@ -18,34 +21,34 @@
             return number;
         }
 
-        
-
-
-        static void HigherOrLower(int number)
+        static void EnterGuess(int number)
         {
             Console.Write("Enter your guess:");
             if (!int.TryParse(Console.ReadLine(), out int Guess))
             {
-
                 Console.WriteLine("Please enter a number");
-                HigherOrLower(number);
+                EnterGuess(number);
             }
 
-            Console.WriteLine(Guess);
-            Console.WriteLine(number);
+            HigherOrLower(number, Guess);
+        }
 
 
+        static void HigherOrLower(int number, int Guess)
+        {
+
+            //Thread.Sleep(2000);
             // Console.WriteLine(Guess);//will be taken away, just for testing
             // Console.WriteLine(number); //will be taken away, just for testing
             if (Guess > number)
             {
                 Console.WriteLine("You gotta go Lower!");
-                HigherOrLower(number);
+                EnterGuess(number);
             }
             else if (Guess < number)
             {
                 Console.WriteLine("You gotta go Higher!");
-                HigherOrLower(number);
+                EnterGuess(number);
             }
             else if (Guess == number)
             {
